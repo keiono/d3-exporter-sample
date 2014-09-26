@@ -1,0 +1,10 @@
+{
+  "name": "d3-exporter-samples",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "latest",
+    "jquery": "latest",
+    "cytoscape": "latest"
+  },
+  "devDependencies": {}
+}
