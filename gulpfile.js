@@ -58,15 +58,22 @@ gulp.task('fonts', function () {
 });
 
 gulp.task('extras', function () {
-    return gulp.src(['app/*.*', '!app/*.html'], { dot: true })
+    return gulp.src(['app/*.*', '!app/*.html'], {dot: true})
         .pipe(gulp.dest('dist'));
 });
 
-gulp.task('clean', function () {
-    return gulp.src(['.tmp', 'dist'], { read: false }).pipe($.clean());
+
+gulp.task('data', function () {
+    return gulp.src(['app/data/*.json'])
+        .pipe(gulp.dest('dist/data/'));
 });
 
-gulp.task('build', ['html', 'images', 'fonts', 'extras']);
+
+gulp.task('clean', function () {
+    return gulp.src(['.tmp', 'dist'], {read: false}).pipe($.clean());
+});
+
+gulp.task('build', ['html', 'images', 'fonts', 'extras', 'data']);
 
 gulp.task('default', ['clean'], function () {
     gulp.start('build');
@@ -75,7 +82,7 @@ gulp.task('default', ['clean'], function () {
 gulp.task('connect', function () {
     var connect = require('connect');
     var app = connect()
-        .use(require('connect-livereload')({ port: 35729 }))
+        .use(require('connect-livereload')({port: 35729}))
         .use(connect.static('app'))
         .use(connect.static('.tmp'))
         .use(connect.directory('app'));

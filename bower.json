@@ -4,7 +4,7 @@
   "dependencies": {
     "bootstrap": "latest",
     "jquery": "latest",
-    "cytoscape": "latest"
+    "d3": "3.4.11~"
   },
   "devDependencies": {}
 }
